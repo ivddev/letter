@@ -136,36 +136,9 @@
 
   $(document).ready(function() {
 
-    // Retrieve local storage data.
-    if (!gv.restoreDraft()) {
-      // if there is no data stored, update date
-      $('.sidebar-date').html(gv.createDateGerman());
-    }
-
-    // Check whether to show delete-storage-button or not.
-    gv.triggerStorageInfo();
-
-    // Set title.
-    gv.setTitleFromSubjectAndDate();
-
-    // Event listener
-    $('[contenteditable]').on('input propertychange paste', function(e) {
-      gv.saveDraft();
-      gv.triggerStorageInfo();
-    });
-
-    $('.clear-storage-btn').on('click', function(e) {
-      e.preventDefault();
-      if (confirm('Der Entwurf wird endgültig gelöscht. Bist du dir sicher?')) {
-        gv.deleteDraft();
-        gv.triggerStorageInfo();
-      }
-    });
-
-    $('.body-subject').on('input propertychange paste', function(e) {
-      gv.setTitleFromSubjectAndDate();
-    });
-
+    $('.sidebar-date').html(gv.createDateGerman());
+    
+   
   });
 
 })(window, document, jQuery.noConflict(), window.gv = window.gv || {});
